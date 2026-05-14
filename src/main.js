@@ -34,8 +34,8 @@ async function init() {
     });
 
   } catch (error) {
-    console.error('Error loading games:', error);
-    gameGrid.innerHTML = `<div class="col-span-full py-20 text-center text-gray-500">Error loading catalog. Please check your data connection.</div>`;
+    console.error('Error loading assets:', error);
+    gameGrid.innerHTML = `<div class="col-span-full py-20 text-center text-gray-500">Error loading catalog. Please check your network connection.</div>`;
   }
 }
 
@@ -73,7 +73,7 @@ function renderGames() {
   if (filteredGames.length === 0) {
     gameGrid.innerHTML = `
       <div class="col-span-full py-20 text-center">
-        <h3 class="text-xl font-display font-bold text-white mb-2">No Games Found</h3>
+        <h3 class="text-xl font-display font-bold text-white mb-2">No Entries Found</h3>
         <p class="text-gray-500">Try adjusting your filters.</p>
       </div>
     `;
