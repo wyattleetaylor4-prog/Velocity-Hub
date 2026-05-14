@@ -1,42 +1,58 @@
 [
   {
-    "id": "slope",
-    "title": "Slope",
-    "description": "Navigate a ball through a futuristic 3D city in this fast-paced arcade game.",
-    "iframeUrl": "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://637375276-880653138242300117.preview.editmysite.com/uploads/b/139890129-212992034740003883/files/slope.swf.json",
-    "thumbnail": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=800&auto=format&fit=crop",
+    "id": "retro-bowl",
+    "title": "Retro Bowl",
+    "description": "",
+    "iframeUrl": "https://game316009.konggames.com/gamez/0031/6009/live/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=800&auto=format&fit=crop",
+    "category": "Sports"
+  },
+  {
+    "id": "tsunamis-io",
+    "title": "Tsunamis.io",
+    "description": "",
+    "iframeUrl": "https://tsunamis.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1505118380757-91f5f45d8de0?q=80&w=800&auto=format&fit=crop",
     "category": "Action"
   },
   {
-    "id": "tetris",
-    "title": "Tetris",
-    "description": "The classic block-stacking puzzle game that never gets old.",
-    "iframeUrl": "https://chvin.github.io/react-tetris/",
-    "thumbnail": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=800&auto=format&fit=crop",
-    "category": "Puzzle"
+    "id": "skribbl-io",
+    "title": "Skribbl.io",
+    "description": "",
+    "iframeUrl": "https://skribbl.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop",
+    "category": "Casual"
   },
   {
-    "id": "2048",
-    "title": "2048",
-    "description": "Join the numbers and get to the 2048 tile!",
-    "iframeUrl": "https://play2048.co/",
-    "thumbnail": "https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?q=80&w=800&auto=format&fit=crop",
-    "category": "Puzzle"
+    "id": "eaglercraft",
+    "title": "Eaglercraft",
+    "description": "",
+    "iframeUrl": "https://eaglercraft.com/",
+    "thumbnail": "https://images.unsplash.com/photo-1607988523111-737d4e584b2b?q=80&w=800&auto=format&fit=crop",
+    "category": "Adventure"
   },
   {
-    "id": "dino",
-    "title": "Chrome Dino Run",
-    "description": "The classic offline game where you jump over obstacles as a T-Rex.",
-    "iframeUrl": "https://chromedino.com/",
-    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
-    "category": "Classic"
+    "id": "kick-lucky-blocks-online",
+    "title": "Kick Lucky Blocks Online",
+    "description": "",
+    "iframeUrl": "https://files.twoplayergames.org/files/games/h1/kick-lucky-blocks-online/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "category": "Arcade"
   },
   {
-    "id": "basket-slam",
-    "title": "Basket Slam",
-    "description": "A fun physics-based basketball game.",
-    "iframeUrl": "https://www.google.com/logos/2012/basketball-2012-hp.html",
-    "thumbnail": "https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=800&auto=format&fit=crop",
-    "category": "Sports"
+    "id": "bullet-force",
+    "title": "Bullet Force",
+    "description": "",
+    "iframeUrl": "https://crazygames.turnfight.com/",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "category": "Action"
+  },
+  {
+    "id": "stickman-kombat-2d",
+    "title": "Stickman Kombat 2D",
+    "description": "Stickman Kombat 2D is a fighting game where you can choose several game modes and fight against challenging fighters.",
+    "iframeUrl": "https://html5.gamedistribution.com/rvvASMiM/6d3928f393774157a7aed692f08ee011/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.twoplayergames.org%2Fgame%2Fstickman-kombat-2d",
+    "thumbnail": "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=800&auto=format&fit=crop",
+    "category": "Fighting"
   }
 ]
