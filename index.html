@@ -1,15 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050505" />
-    <meta name="description" content="Unblocked Games Vault - Play your favorite browser games anywhere." />
-    <title>Unblocked Games Vault</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="Unblocked Games Vault - Play your favorite browser games anywhere." />
+  <title>Unblocked Games Vault</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --gaming-bg: #050505;
+      --gaming-card: #0F0F12;
+      --gaming-accent: #3B82F6;
+      --gaming-border: #1F2937;
+    }
+
+    body {
+      background-color: var(--gaming-bg);
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .glass-morphism {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gaming-card {
+      background-color: var(--gaming-card);
+      border: 1px solid var(--gaming-border);
+      transition: all 0.3s ease;
+    }
+
+    .gaming-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    #game-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--gaming-bg);
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gaming: {
+              bg: '#050505',
+              card: '#0F0F12',
+              accent: '#3B82F6',
+              border: '#1F2937',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 glass-morphism px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-2 cursor-pointer group" onclick="resetView()">
+      <div class="p-2 bg-gaming-accent rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+        <i data-lucide="gamepad-2" class="w-6 h-6 text-white"></i>
+      </div>
+      <span class="font-display text-xl font-bold tracking-tight text-white">
+        GAMING<span class="text-gaming-accent">VAULT</span>
+      </span>
+    </div>
+
+    <div class="relative w-full max-w-md md:order-2">
+      <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+      <input 
+        type="text" 
+        id="search-input"
+        placeholder="Search for a game..."
+        class="w-full bg-black/40 border border-gaming-border rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-gaming-accent transition-colors placeholder:text-gray-600 text-white"
+      />
+    </div>
+
+    <div class="hidden lg:flex items-center gap-6 md:order-3">
+      <button class="px-4 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors" onclick="playRandom()">
+        Random Game
+      </button>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 pt-12">
+    <!-- Hero Section -->
+    <header class="mb-16">
+      <div class="flex items-center gap-3 text-gaming-accent mb-4">
+        <i data-lucide="trending-up" class="w-5 h-5"></i>
+        <span class="text-xs font-bold uppercase tracking-[0.2em]">Top Pick of the Week</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white">
+        Play Hard.<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gaming-accent to-blue-300">Unblocked.</span>
+      </h1>
+      <p class="text-gray-400 text-lg max-w-2xl leading-relaxed">
+        No restrictions, no filters. Your favorite browser-based classics, optimized for any device.
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+      <div id="category-filters" class="flex items-center gap-2 bg-gaming-card p-1 rounded-xl border border-gaming-border w-fit overflow-x-auto no-scrollbar">
+        <!-- Categories will be injected here -->
+      </div>
+      
+      <div class="flex items-center gap-4 text-xs font-mono text-gray-500 uppercase tracking-widest">
+        <span class="flex items-center gap-2"><i data-lucide="layout-grid" class="w-3 h-3"></i> <span id="game-count">0</span> Games</span>
+      </div>
+    </div>
+
+    <!-- Game Grid -->
+    <div id="game-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Games will be injected here -->
+    </div>
+  </main>
+
+  <footer class="mt-40 border-t border-gaming-border py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <p class="text-[10px] uppercase tracking-widest text-gray-600 font-bold">
+        © 2026 UNBLOCKED VAULT
+      </p>
+      <div class="flex gap-8 text-[10px] uppercase tracking-widest text-gray-600 font-bold">
+        <a href="#" class="hover:text-gaming-accent transition-colors">Privacy</a>
+        <a href="#" class="hover:text-gaming-accent transition-colors">Terms</a>
+        <a href="#" class="hover:text-gaming-accent transition-colors">DMCA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Game Viewer Modal -->
+  <div id="game-viewer">
+    <div class="flex items-center justify-between px-6 py-4 glass-morphism">
+      <div class="flex items-center gap-4">
+        <button onclick="closeViewer()" class="p-2 hover:bg-white/10 rounded-full transition-colors">
+          <i data-lucide="x" class="w-6 h-6 text-white"></i>
+        </button>
+        <div>
+          <h2 id="viewer-title" class="font-display text-xl font-bold text-white">Game Title</h2>
+          <span class="text-[10px] uppercase tracking-widest text-gaming-accent font-mono">Playing Now</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="reloadGame()" class="p-2 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2 text-sm text-gray-400 hover:text-white">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Reload</span>
+        </button>
+        <button onclick="toggleFullScreen()" class="bg-gaming-accent hover:bg-gaming-accent/80 p-2 rounded-lg transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+          <i data-lucide="maximize-2" class="w-5 h-5 text-white"></i>
+          <span class="hidden sm:inline text-white font-bold text-sm">Full Screen</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex-grow bg-black relative h-[calc(100vh-80px)]">
+      <iframe id="game-iframe" class="w-full h-full border-none" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script src="./src/main.js"></script>
+</body>
+</html>
